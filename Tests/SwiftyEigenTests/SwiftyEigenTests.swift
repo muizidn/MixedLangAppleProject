@@ -1,11 +1,11 @@
 import XCTest
-@testable import SwiftyEigen
+@testable import MixedLangAppleProject
 
-final class SwiftyEigenTests: XCTestCase {
+final class MixedLangAppleProjectTests: XCTestCase {
     func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
         // results.
-        XCTAssertEqual(SwiftyEigen().text, "Hello, World!")
+        XCTAssertEqual(MixedLangAppleProject().text, "Hello, World!")
     }
 }

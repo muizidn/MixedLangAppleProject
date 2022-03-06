@@ -4,25 +4,54 @@
 import PackageDescription
 
 let package = Package(
-    name: "SwiftyEigen",
+    name: "MainModule",
     products: [
-        // Products define the executables and libraries a package produces, and make them visible to other packages.
+        .executable(
+            name: "MainModule",
+            targets: ["MainModule", "ObjCModule", "SwiftModule"]
+        ),
         .library(
-            name: "SwiftyEigen",
-            targets: ["SwiftyEigen"]),
+            name: "ObjCModule",
+            targets: ["ObjCModule"]
+        ),
+        .library(
+            name: "SwiftModule",
+            targets: ["SwiftModule", "ObjCModule"]
+        ),
     ],
     dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: "1.0.0"),
     ],
     targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
-            name: "SwiftyEigen",
-            dependencies: []),
-        .testTarget(
-            name: "SwiftyEigenTests",
-            dependencies: ["SwiftyEigen"]),
+            name: "CPPModule",
+            dependencies: [
+            ],
+            path: "Sources/CPP"
+        ),
+        .target(
+            name: "ObjCModule",
+            dependencies: [
+                "CPPModule"
+            ],
+            path: "Sources/ObjC",
+            cSettings: [
+                .headerSearchPath("Sources/ObjC"),
+            ]
+        ),
+        .target(
+            name: "SwiftModule",
+            dependencies: [
+                "ObjCModule",
+            ],
+            path: "Sources/Swift"
+        ),
+        .executableTarget(
+            name: "MainModule",
+            dependencies: [
+                "ObjCModule",
+                "SwiftModule"
+            ],
+            path: "Sources/Exec"
+        )
     ]
 )
