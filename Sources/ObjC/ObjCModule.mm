@@ -1,5 +1,5 @@
 #import "ObjCModule.h"
-#import "cpp_main_header.h"
+#import <cpp_main_header.h>
 
 @interface FromCPP ()
 @end

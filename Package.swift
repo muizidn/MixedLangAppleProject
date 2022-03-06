@@ -10,6 +10,10 @@ let package = Package(
             name: "MainModule",
             targets: ["MainModule", "ObjCModule", "SwiftModule"]
         ),
+        .executable(
+            name: "MainObjcModule",
+            targets: ["MainObjcModule", "ObjCModule"]
+        ),
         .library(
             name: "ObjCModule",
             targets: ["ObjCModule"]
@@ -46,9 +50,16 @@ let package = Package(
             name: "MainModule",
             dependencies: [
                 "ObjCModule",
-                "SwiftModule"
+                "SwiftModule",
             ],
             path: "Sources/Exec"
+        ),
+        .executableTarget(
+            name: "MainObjcModule",
+            dependencies: [
+                "ObjCModule"
+            ],
+            path: "Sources/ExecObjc"
         )
     ]
 )
