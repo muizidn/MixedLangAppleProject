@@ -1,10 +1,4 @@
-//import SwiftModule
-import ObjCModule
+import SwiftModule
 
-public func foo() {
-    let o = FromCPP()
-    o.print_hello_world_number(1)
-}
-
-
-foo()
+fromObjc()
+fooFromSwift()

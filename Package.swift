@@ -33,10 +33,7 @@ let package = Package(
             dependencies: [
                 "CPPModule"
             ],
-            path: "Sources/ObjC",
-            cSettings: [
-                .headerSearchPath("Sources/ObjC"),
-            ]
+            path: "Sources/ObjC"
         ),
         .target(
             name: "SwiftModule",
